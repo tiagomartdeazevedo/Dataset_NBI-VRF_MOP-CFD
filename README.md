@@ -1,38 +1,64 @@
-# Dataset for VRF-NBI Multi-Objective CFD Optimization
+# Dataset and Code for VRF-NBI Multi-Objective CFD Optimization
 
-This repository provides the dataset used in the study **"Analysis and Implementation of VRF-NBI in the Multi-Objective Optimization of High-Dimensional Hydraulic Systems"**, developed by **Tiago Martins de Azevedo**.  
-The data support the implementation of a multivariate and multi-objective optimization framework that integrates **Response Surface Methodology (RSM)** and **Computational Fluid Dynamics (CFD)** through the **Varimax Rotated Factor–Normal Boundary Intersection (VRF-NBI)** method.
+This repository provides the dataset and Python codes used in the study **"Analysis and Implementation of VRF-NBI in the Multi-Objective Optimization of High-Dimensional Hydraulic Systems"**, developed by **Tiago Martins de Azevedo**.
+
+The repository supports the reproduction and extension of a multivariate and multi-objective optimization framework that integrates **Design of Experiments (DOE)**, **Response Surface Methodology (RSM)**, **multivariate statistical analysis**, and **Computational Fluid Dynamics (CFD)** through the **Varimax-Rotated Factor–Normal Boundary Intersection (VRF-NBI)** method.
 
 ---
 
 ## 🧭 Project Overview
 
-The dataset represents a **parametric CFD study** of an **axial hydraulic turbine inlet duct**, modeled according to IEC 60193 recommendations.  
-Each record in the database corresponds to a simulation performed according to a **Central Composite Design (CCD)** with five independent variables (control factors) and fourteen dependent variables (performance metrics).
+The dataset represents a **parametric CFD study** of an **axial hydraulic turbine inlet duct**, modeled according to IEC 60193 recommendations.
 
-The data were used to:
-- Evaluate the influence of mesh, flow, and convergence parameters on hydrodynamic performance.  
-- Build quadratic response surfaces for each metric.  
-- Apply **Principal Component Analysis (PCA)** and **Factor Analysis (FA)** to reduce dimensionality.  
-- Integrate the latent variables (rotated factor scores) into a **Normal Boundary Intersection (NBI)** framework for Pareto frontier generation.
+Each record in the database corresponds to a CFD simulation performed according to a **Central Composite Design (CCD)** with five independent variables and fourteen dependent performance metrics.
+
+The data and codes were used to:
+
+- Evaluate the influence of mesh, flow, and convergence parameters on CFD performance.
+- Build quadratic response surface models for the performance metrics.
+- Apply **Principal Component Analysis (PCA)** and **Factor Analysis (FA)** with Varimax rotation to reduce dimensionality.
+- Represent the 14 original responses through three latent factors.
+- Integrate the rotated factor scores into a **Normal Boundary Intersection (NBI)** framework.
+- Generate and evaluate Pareto-optimal solutions.
+- Compare VRF-NBI with alternative multi-objective optimization approaches, including **NSGA-II, MOEA/D**, and other implemented methods.
+- Evaluate the performance of the different optimization strategies using quantitative performance indicators.
 
 ---
 
-## 📁 Dataset Structure
+## 📁 Repository Structure
 
-**File:** `Database.xlsx`  
-**Sheets:**  
-- `Data` – Main dataset with input and output variables.  
-- `Metadata` (if included) – Summary of variable definitions and statistical notes.  
+### Dataset
 
-Each row corresponds to a single CFD run performed under specific mesh, flow, and convergence conditions defined by the CCD.
+**File:** `Database.xlsx`
+
+**Sheets:**
+
+- `Data` – Main dataset containing the input factors and output responses.
+- `Metadata` – Variable definitions and additional statistical information, when available.
+
+Each row corresponds to a CFD run performed under specific mesh, flow, and convergence conditions defined by the CCD.
+
+### Python Codes
+
+The repository also includes Python scripts for data processing, statistical analysis, dimensionality reduction, surrogate modeling, multi-objective optimization, and comparison of optimization methods.
+
+The codes can be used to:
+
+1. Load and preprocess the CFD dataset.
+2. Construct response surface models.
+3. Perform PCA and Factor Analysis with Varimax rotation.
+4. Generate the latent variables used in VRF-NBI.
+5. Perform multi-objective optimization.
+6. Generate Pareto-optimal solutions.
+7. Compare VRF-NBI with alternative optimization methods.
+8. Calculate the performance indicators used for the comparison.
 
 ---
 
 ## ⚙️ Input Variables (Factors)
 
 | Symbol | Description | Unit | Range / Levels |
-|:------:|:-------------|:------|:---------------|
+|---|---|---|---|
 | MV | Mesh volume size | mm | 1.5 – 4.0 |
 | ME | Inlet mesh size | mm | 1.5 – 4.0 |
 | MS | Outlet mesh size | mm | 1.5 – 4.0 |
@@ -44,7 +70,7 @@ Each row corresponds to a single CFD run performed under specific mesh, flow, an
 ## 📊 Output Variables (Responses)
 
 | Symbol | Description | Unit |
-|:------:|:-------------|:------|
+|---|---|---|
 | CM | Mesh generation cost | ×10⁻¹ USD |
 | CS | Simulation cost | ×10⁻¹ USD |
 | Nel | Number of mesh elements | ×10⁶ |
@@ -58,38 +84,91 @@ Each row corresponds to a single CFD run performed under specific mesh, flow, an
 | k | Turbulent kinetic energy | ×10¹ m²/s² |
 | ε | Turbulence dissipation rate | ×10⁻³ |
 | Re | Reynolds number | ×10⁻⁶ |
-| y+ | Wall coordinate (dimensionless) | ×10⁻¹ |
+| y+ | Wall coordinate | ×10⁻¹ |
 
 These 14 responses were grouped into three main performance dimensions through **Varimax-rotated Factor Analysis (FA)**:
-- **VRF1:** Mesh quality and cost metrics  
-- **VRF2:** Flow and energy-related metrics  
-- **VRF3:** Convergence behavior metrics  
+
+- **VRF1:** Mesh quality and cost metrics
+- **VRF2:** Flow and energy-related metrics
+- **VRF3:** Convergence behavior metrics
 
 ---
 
 ## 🧮 Methodological Context
 
-Although this repository focuses on the data, the underlying methodology combines:
-- **Response Surface Methodology (RSM)** for regression modeling,  
-- **PCA/FA** for dimensionality reduction, and  
-- **Normal Boundary Intersection (NBI)** for Pareto frontier generation.  
+The underlying methodology combines:
 
-This hybrid framework—referred to as **VRF-NBI**—aims to rationalize CFD simulations by reducing computational cost and improving accuracy while preserving multivariate consistency among performance indicators.
+- **Design of Experiments (DOE)** for systematic exploration of the CFD parameter space;
+- **Response Surface Methodology (RSM)** for surrogate modeling;
+- **Principal Component Analysis (PCA)** and **Factor Analysis (FA)** for dimensionality reduction;
+- **Varimax rotation** for obtaining interpretable latent factors;
+- **Normal Boundary Intersection (NBI)** for multi-objective optimization;
+- **Simplex-Lattice mixture design** for systematic generation of objective-weight combinations.
+
+The resulting framework is referred to as **VRF-NBI (Varimax-Rotated Factor–Normal Boundary Intersection)**.
+
+The approach is designed to rationalize CFD simulations by considering multiple correlated performance metrics simultaneously and by systematically exploring the trade-offs among mesh, flow, convergence, and computational-cost criteria.
+
+---
+
+## 🔬 Optimization Methods
+
+The repository includes codes for evaluating and comparing different optimization strategies.
+
+The implemented approaches include:
+
+### VRF-NBI
+
+The proposed methodology combines multivariate dimensionality reduction with the NBI formulation. The rotated factor scores are used as objective functions, and the Simplex-Lattice design is used to systematically explore different objective-weight combinations.
+
+### NSGA-II
+
+The **Non-dominated Sorting Genetic Algorithm II (NSGA-II)** is used as an evolutionary multi-objective optimization benchmark.
+
+### MOEA/D
+
+The **Multi-Objective Evolutionary Algorithm based on Decomposition (MOEA/D)** is used as an alternative decomposition-based optimization strategy.
+
+### Other optimization approaches
+
+Additional optimization approaches implemented in the repository can be used to reproduce the comparative analysis presented in the study.
+
+The comparison allows the performance of VRF-NBI to be evaluated against alternative strategies under the same problem formulation and dataset.
+
+---
+
+## 📈 Optimization Comparison
+
+The Python codes allow the user to reproduce the comparison between the optimization approaches.
+
+The analysis includes the generation and evaluation of Pareto-optimal solutions and the calculation of performance indicators used to assess the quality of the obtained solution sets.
+
+Depending on the implemented analysis, the comparison includes metrics such as:
+
+- **Generational Distance (GD)**
+- **Hypervolume (HV)**
+- **Spread / distribution metrics**
+- **S/GPE**
+- Other indicators implemented in the corresponding Python scripts.
+
+The comparison is intended to evaluate different aspects of the optimization results, including convergence toward the reference Pareto frontier and the distribution of solutions.
 
 ---
 
 ## 🚀 Usage Instructions
 
-1. Download the `Database.xlsx` file.  
-2. Load the dataset into Python, MATLAB, or R for analysis.  
-3. Perform regression or statistical modeling using the provided variables.  
-4. (Optional) Apply PCA/FA to reconstruct the VRF latent variables for multi-objective optimization.  
-5. Use RSM or meta-modeling tools to reproduce or extend the optimization study.  
+### 1. Download the repository
 
-Example in Python:
+Clone or download this repository and ensure that the dataset and Python scripts are available in the same working environment.
+
+### 2. Load the dataset
+
+Example:
 
 ```python
 import pandas as pd
 
 df = pd.read_excel('Database.xlsx', sheet_name='Data')
+
 print(df.head())
+print(df.shape)
