@@ -163,12 +163,71 @@ Clone or download this repository and ensure that the dataset and Python scripts
 
 ### 2. Load the dataset
 
-Example:
+Load `Database.xlsx` using the provided Python scripts. The dataset contains the CFD observations used in the statistical analysis and multi-objective optimization.
 
-```python
-import pandas as pd
+### 3. Run the analysis
 
-df = pd.read_excel('Database.xlsx', sheet_name='Data')
+The Python codes can be used to reproduce the statistical and optimization analyses presented in the study.
 
-print(df.head())
-print(df.shape)
+The general computational workflow is:
+
+```text
+Database.xlsx
+      ↓
+Data preprocessing
+      ↓
+DOE / Statistical analysis
+      ↓
+PCA + Factor Analysis
+      ↓
+Varimax rotation
+      ↓
+Latent factors
+      ↓
+Response Surface Models
+      ↓
+Multi-objective optimization
+      ↓
+Pareto solutions
+      ↓
+VRF-NBI / NSGA-II / MOEA/D comparison
+      ↓
+Performance indicators
+
+4. Reproduce or extend the study
+
+The dataset and Python codes can be adapted for further investigations, including:
+
+investigating alternative statistical models;
+testing different dimensionality-reduction techniques;
+implementing alternative multi-objective optimization algorithms;
+modifying objective functions and optimization weights;
+investigating additional CFD performance metrics;
+extending the methodology to other CFD problems.
+📚 Reproducibility
+
+This repository is intended to support reproducibility, transparency, and further development of the methodology presented in the study.
+
+The dataset contains the CFD observations used in the statistical and optimization analyses, while the Python codes provide computational procedures for reproducing the main analyses and comparing alternative optimization strategies.
+
+In particular, the optimization comparison code provides a computational basis for evaluating the performance of VRF-NBI, NSGA-II, MOEA/D, and other implemented approaches within the framework investigated in this study.
+
+The repository should therefore be considered a complementary computational resource to the thesis and associated scientific publication, allowing researchers to inspect, reproduce, modify, and extend the proposed methodology.
+
+📖 Reference
+
+If you use this dataset or code, please cite:
+
+Azevedo, T. M. or de Azevedo, T. M. or Azevedo, T. M. de
+
+Analysis and Implementation of VRF-NBI in the Multi-Objective Optimization of High-Dimensional Hydraulic Systems.
+
+👤 Author
+
+Tiago Martins de Azevedo
+
+Mechanical Engineer | CFD | R&D | Multi-Objective Optimization | Hydraulic Systems
+
+GitHub: tiagomartdeazevedo
+
+ORCID: 0000-0001-6086-5039
