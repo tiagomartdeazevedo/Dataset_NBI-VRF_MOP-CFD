@@ -193,6 +193,7 @@ Pareto solutions
 VRF-NBI / NSGA-II / MOEA/D comparison
       ↓
 Performance indicators
+```
 
 ### 4. Reproduce or extend the study
 
@@ -204,6 +205,7 @@ implementing alternative multi-objective optimization algorithms;
 modifying objective functions and optimization weights;
 investigating additional CFD performance metrics;
 extending the methodology to other CFD problems.
+
 ### 📚 Reproducibility
 
 This repository is intended to support reproducibility, transparency, and further development of the methodology presented in the study.
