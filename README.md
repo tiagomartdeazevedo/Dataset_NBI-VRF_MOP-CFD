@@ -194,7 +194,7 @@ VRF-NBI / NSGA-II / MOEA/D comparison
       ↓
 Performance indicators
 
-4. Reproduce or extend the study
+### 4. Reproduce or extend the study
 
 The dataset and Python codes can be adapted for further investigations, including:
 
@@ -204,7 +204,7 @@ implementing alternative multi-objective optimization algorithms;
 modifying objective functions and optimization weights;
 investigating additional CFD performance metrics;
 extending the methodology to other CFD problems.
-📚 Reproducibility
+### 📚 Reproducibility
 
 This repository is intended to support reproducibility, transparency, and further development of the methodology presented in the study.
 
@@ -214,7 +214,7 @@ In particular, the optimization comparison code provides a computational basis f
 
 The repository should therefore be considered a complementary computational resource to the thesis and associated scientific publication, allowing researchers to inspect, reproduce, modify, and extend the proposed methodology.
 
-📖 Reference
+### 📖 Reference
 
 If you use this dataset or code, please cite:
 
@@ -222,7 +222,7 @@ Azevedo, T. M. or de Azevedo, T. M. or Azevedo, T. M. de
 
 Analysis and Implementation of VRF-NBI in the Multi-Objective Optimization of High-Dimensional Hydraulic Systems.
 
-👤 Author
+###👤 Author
 
 Tiago Martins de Azevedo
 
