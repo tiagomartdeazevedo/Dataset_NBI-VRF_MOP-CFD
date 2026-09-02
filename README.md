@@ -224,7 +224,7 @@ Azevedo, T. M. or de Azevedo, T. M. or Azevedo, T. M. de
 
 Analysis and Implementation of VRF-NBI in the Multi-Objective Optimization of High-Dimensional Hydraulic Systems.
 
-###👤 Author
+### 👤 Author
 
 Tiago Martins de Azevedo
 
@@ -233,3 +233,5 @@ Mechanical Engineer | CFD | R&D | Multi-Objective Optimization | Hydraulic Syste
 GitHub: tiagomartdeazevedo
 
 ORCID: 0000-0001-6086-5039
+
+E-mail: tiago.deazevedo@yahoo.com.br
